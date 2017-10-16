@@ -1,7 +1,5 @@
 package com.yschool.gplayservices.api;
 
-import android.content.Context;
-
 import com.google.gson.GsonBuilder;
 import com.yschool.gplayservices.interfaces.Manager;
 
@@ -21,14 +19,21 @@ public class ApiManager implements Manager {
 
     private Retrofit retrofit;
     private ApiService apiService;
+    private volatile static ApiManager instance;
 
-    @Override
-    public void init(Context context) {
-        initRetrofit(context);
+    private ApiManager() {
+        initRetrofit();
         initServices();
     }
 
-    private void initRetrofit(Context context) {
+    public synchronized static ApiManager getInstance() {
+        if (instance == null) {
+            instance = new ApiManager();
+        }
+        return instance;
+    }
+
+    private void initRetrofit() {
         //Interceptor for logging
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

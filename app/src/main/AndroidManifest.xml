@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".PlacesActivity"
+            android:name=".flow.places.PlacesActivity"
             android:label="@string/title_activity_places">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

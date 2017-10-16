@@ -1,6 +1,6 @@
 package com.yschool.gplayservices.base;
 
-interface BasePresenter<V> {
+public interface BasePresenter<V> {
 
     void attachView(V view);
 
