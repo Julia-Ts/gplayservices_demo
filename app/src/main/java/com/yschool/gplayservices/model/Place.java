@@ -23,6 +23,9 @@ public class Place {
     @SerializedName("types")
     private List<String> types;
 
+    @SerializedName("terms")
+    private List<Term> terms;
+
     @SerializedName("place_id")
     private String placeId;
 
@@ -51,6 +54,14 @@ public class Place {
 
     public void setTypes(List<String> types) {
         this.types = types;
+    }
+
+    public List<Term> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(List<Term> terms) {
+        this.terms = terms;
     }
 
     public String getPlaceId() {

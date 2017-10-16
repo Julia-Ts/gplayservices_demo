@@ -3,7 +3,6 @@ package com.yschool.gplayservices.flow.places;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,35 +23,28 @@ import butterknife.BindView;
 
 public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> implements PlacesContract.View {
 
-    @BindView(R.id.cityInput)
-    AutoCompleteTextView cityInput;
+    @BindView(R.id.placesInput)
+    AutoCompleteTextView placesInput;
 
-    private List<String> suggestionList = new ArrayList<>();
     private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        cityInput.setThreshold(5);
-        cityInput.addTextChangedListener(new AfterTextChangedWatcher() {
-
+        placesInput.setThreshold(0);
+        placesInput.addTextChangedListener(new AfterTextChangedWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                presenter.loadCities(s.toString());
+                presenter.loadPlaces(s.toString());
             }
-
         });
 
-        cityInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        placesInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                cityInput.dismissDropDown();
+                placesInput.dismissDropDown();
             }
         });
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, suggestionList);
-        adapter.setNotifyOnChange(true);
-        cityInput.setAdapter(adapter);
     }
 
     @NonNull
@@ -67,10 +59,12 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
     }
 
     @Override
-    public void onCitiesLoaded(List<String> cities) {
-        adapter.clear();
-        adapter.addAll(cities);
-        cityInput.showDropDown();
+    public void onPlacesLoaded(List<String> places) {
+//        adapter.clear();
+//        adapter.addAll(places);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, places);
+        placesInput.setAdapter(adapter);
+        placesInput.showDropDown();
     }
 
 }

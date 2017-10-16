@@ -81,8 +81,10 @@ public class ApiManager implements Manager {
 
     public Single<PlacesResponse> getPlaces(String input) {
         Map<String, String> params = new HashMap<>();
-        params.put(ApiService.INPUT_PARAM, input);
         params.put(ApiService.KEY_PARAM, ApiService.API_KEY);
+        params.put(ApiService.INPUT_PARAM, input);
+        params.put("types", "(regions)");
+        params.put("language", "en");
         return apiService.getPlaces(params);
     }
 

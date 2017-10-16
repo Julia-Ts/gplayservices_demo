@@ -13,13 +13,13 @@ public final class PlacesContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void loadCities(String input);
+        void loadPlaces(String input);
 
     }
 
     public interface View extends BaseView {
 
-        void onCitiesLoaded(List<String> cities);
+        void onPlacesLoaded(List<String> places);
 
     }
 
