@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.itservice24.R;
+import com.yschool.gplayservices.R;
 
 public class ProgressDialogFragment extends BaseDialogFragment {
 
