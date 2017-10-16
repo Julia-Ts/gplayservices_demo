@@ -5,6 +5,7 @@ import com.yschool.gplayservices.interfaces.Manager;
 import com.yschool.gplayservices.response.PlacesResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Single;
@@ -67,7 +68,7 @@ public class ApiManager implements Manager {
         GsonBuilder builder = new GsonBuilder();
         builder.serializeNulls();
         try {
-            builder.registerTypeAdapter(Class.forName("com.jt.maps.model.PlacesResponse"), new PlacesSerializer());
+            builder.registerTypeAdapter(Class.forName("com.yschool.gplayservices.response.PlacesResponse"), new PlacesSerializer());
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -78,7 +79,10 @@ public class ApiManager implements Manager {
         apiService = retrofit.create(ApiService.class);
     }
 
-    public Single<PlacesResponse> getPlaces(Map<String, String> params) {
+    public Single<PlacesResponse> getPlaces(String input) {
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiService.INPUT_PARAM, input);
+        params.put(ApiService.KEY_PARAM, ApiService.API_KEY);
         return apiService.getPlaces(params);
     }
 

@@ -6,13 +6,13 @@ import android.support.annotation.NonNull;
 
 public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActivity implements BaseView {
 
-    protected T mPresenter;
+    protected T presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = getPresenterInstance();
-        mPresenter.attachView(this);
+        presenter = getPresenterInstance();
+        presenter.attachView(this);
     }
 
     @NonNull
@@ -26,7 +26,7 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.detachView();
+        presenter.detachView();
     }
 
 }

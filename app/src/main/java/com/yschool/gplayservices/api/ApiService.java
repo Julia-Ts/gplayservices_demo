@@ -14,6 +14,12 @@ import retrofit2.http.QueryMap;
 
 public interface ApiService {
 
+    //Google places Web api key
+    String API_KEY = "AIzaSyCird2WO6ilUwE5sxky4eUiF0T-MwwhA9U";
+
+    String KEY_PARAM = "key";
+    String INPUT_PARAM = "input";
+
     @GET(ApiSettings.PATH_PLACES)
     Single<PlacesResponse> getPlaces(@QueryMap Map<String, String> parameters);
 

@@ -3,11 +3,19 @@ package com.yschool.gplayservices.base;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+
+    @Nullable
+    @BindView(android.R.id.content)
+    protected View rootView;
 
     private ProgressDialogFragment mProgressDialog;
 
@@ -25,6 +33,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @LayoutRes
     protected abstract int getLayoutResourceId();
+
+    @Override
+    public void showMessage(@StringRes int error) {
+        showMessage(getString(error));
+    }
+
+    @Override
+    public void showMessage(String message) {
+        if (rootView != null) {
+            Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show();
+        }
+    }
 
     public void showProgress() {
         if (mProgressDialog == null) {
