@@ -56,15 +56,9 @@ public class PlacesPresenter extends BaseMvpPresenterImpl<PlacesContract.View> i
     private String extractCountryAndCity(Place place) {
         String city = extractCity(place);
         String country = extractCountry(place);
-        if (city != null && country != null) {
-            return String.format(view.getContext().getString(R.string.country_and_city), city, country);
-        } else if (country != null) {
-            return country;
-        } else if (city != null) {
-            return city;
-        } else {
-            return null;
-        }
+        return (city != null && country != null)
+                ? String.format(view.getContext().getString(R.string.country_and_city), city, country)
+                : null;
     }
 
     private String extractCity(Place place) {

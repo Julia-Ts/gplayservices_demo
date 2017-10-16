@@ -26,12 +26,9 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
     @BindView(R.id.placesInput)
     AutoCompleteTextView placesInput;
 
-    private ArrayAdapter<String> adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        placesInput.setThreshold(0);
         placesInput.addTextChangedListener(new AfterTextChangedWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -60,9 +57,7 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
 
     @Override
     public void onPlacesLoaded(List<String> places) {
-//        adapter.clear();
-//        adapter.addAll(places);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, places);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, places);
         placesInput.setAdapter(adapter);
         placesInput.showDropDown();
     }
