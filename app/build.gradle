@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.yschool.gplayservices"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def versionSupport = '26.1.0'
+    def retrofitVersion = '2.3.0'
+    def okHttpVersion = '3.8.1'
+//    def playServices = '11.4.2'
+    def rxJava2 = '2.1.4'
+    def rxAndroid = '2.0.1'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:$versionSupport"
+    compile "com.android.support:design:$versionSupport"
+
+    // Google Play Services
+//    compile "com.google.android.gms:play-services-maps:$playServices"
+//    compile "com.google.android.gms:play-services-places:$playServices"
+//    compile "com.google.android.gms:play-services-location:$playServices"
+
+    // REST
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    // Rx
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    compile "io.reactivex.rxjava2:rxjava:$rxJava2"
+    compile "com.jakewharton.rxbinding2:rxbinding:2.0.0"
+    compile 'com.trello:navi:1.0'
+    // Ui
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    // Logs
+    compile 'com.jakewharton.timber:timber:4.5.1'
+}
