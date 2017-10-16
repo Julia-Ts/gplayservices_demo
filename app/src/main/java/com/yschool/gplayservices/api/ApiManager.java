@@ -1,9 +1,7 @@
-package com.yschool.gplayservices.manager;
+package com.yschool.gplayservices.api;
 
 import android.content.Context;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
 import com.google.gson.GsonBuilder;
 import com.yschool.gplayservices.interfaces.Manager;
 
