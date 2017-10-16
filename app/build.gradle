@@ -22,7 +22,7 @@ dependencies {
     def versionSupport = '26.1.0'
     def retrofitVersion = '2.3.0'
     def okHttpVersion = '3.8.1'
-//    def playServices = '11.4.2'
+    def playServices = '11.4.2'
     def rxJava2 = '2.1.4'
     def rxAndroid = '2.0.1'
 
@@ -31,9 +31,8 @@ dependencies {
     compile "com.android.support:design:$versionSupport"
 
     // Google Play Services
-//    compile "com.google.android.gms:play-services-maps:$playServices"
-//    compile "com.google.android.gms:play-services-places:$playServices"
-//    compile "com.google.android.gms:play-services-location:$playServices"
+    compile "com.google.android.gms:play-services-maps:$playServices"
+    compile "com.google.android.gms:play-services-places:$playServices"
 
     // REST
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"

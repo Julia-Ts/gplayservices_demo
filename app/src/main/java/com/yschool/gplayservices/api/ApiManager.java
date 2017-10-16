@@ -2,10 +2,12 @@ package com.yschool.gplayservices.api;
 
 import com.google.gson.GsonBuilder;
 import com.yschool.gplayservices.interfaces.Manager;
+import com.yschool.gplayservices.response.PlacesResponse;
 
 import java.io.IOException;
 import java.util.Map;
 
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
