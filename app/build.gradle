@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def versionNumber = 1
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -7,13 +12,29 @@ android {
         applicationId "com.yschool.gplayservices"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode versionNumber
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
     }
+
+    signingConfigs {
+        release {
+//            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_KEYSTORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS_NAME
+            keyPassword RELEASE_KEY_ALIAS_PASSWORD
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+        }
+
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
         }
     }
 }
