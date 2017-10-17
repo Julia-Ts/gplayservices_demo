@@ -31,8 +31,9 @@ dependencies {
     compile "com.android.support:design:$versionSupport"
 
     // Google Play Services
-    compile "com.google.android.gms:play-services-maps:$playServices"
     compile "com.google.android.gms:play-services-places:$playServices"
+    compile "com.google.android.gms:play-services-location:$playServices"
+    compile "com.google.android.gms:play-services-maps:$playServices"
 
     // REST
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
