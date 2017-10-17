@@ -157,7 +157,6 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-//        map.setOnMyLocationButtonClickListener(this);
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.getUiSettings().setZoomGesturesEnabled(true);
     }
