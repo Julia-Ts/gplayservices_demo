@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
@@ -53,6 +53,7 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
         super.onCreate(savedInstanceState);
         if (checkPlayServices()) {
             setupGoogleApiClient();
+            setupMap();
         }
     }
 
@@ -92,6 +93,11 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
 //                .addApi(LocationServices.API)
                 .enableAutoManage(this, this)
                 .build();
+    }
+
+    private void setupMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
+        mapFragment.getMapAsync(this);
     }
 
     private boolean checkPermission() {
@@ -191,12 +197,12 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        //ignore
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Log.e(PlacesActivity.class.getSimpleName(), getString(R.string.connection_failed));
     }
 
 }

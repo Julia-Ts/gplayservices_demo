@@ -11,8 +11,6 @@ public final class PlacesContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-
-
     }
 
     public interface View extends BaseView {
