@@ -90,7 +90,6 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
                 .addConnectionCallbacks(this)
                 .addApi(Places.PLACE_DETECTION_API)
                 .addOnConnectionFailedListener(this)
-//                .addApi(LocationServices.API)
                 .enableAutoManage(this, this)
                 .build();
     }
