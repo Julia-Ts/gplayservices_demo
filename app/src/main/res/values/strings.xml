@@ -5,7 +5,7 @@
     <string name="title_activity_places">Places</string>
     <string name="country_and_city">%1$s, %2$s</string>
     <string name="most_likely_place_template">Most likely place: %s \n</string>
-    <string name="percent_chance_of_being_here_template">Percent change of being there: %d %</string>
+    <string name="percent_chance_of_being_here_template">Percent change of being there: %d "</string>
     <string name="you_shall_not_pass">You cannot proceed without granting permissions</string>
     <string name="connection_failed">Connection failed</string>
 </resources>

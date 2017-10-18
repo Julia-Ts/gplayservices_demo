@@ -200,7 +200,7 @@ public class PlacesActivity extends BaseMvpActivity<PlacesContract.Presenter> im
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.e(PlacesActivity.class.getSimpleName(), getString(R.string.connection_failed));
+        Timber.e(PlacesActivity.class.getSimpleName(), getString(R.string.connection_failed));
     }
 
 }
